@@ -154,8 +154,8 @@ int main( int argc, char **argv ){
 	}
 	SDL_FreeSurface( tmpSurface );
 	for( int index = 0; index < 10; ++index ){
-		number[ index ].x = index % 3 * 15;
-		number[ index ].y = index / 3 * 27;
+		number[ index ].x = index % 3 * NUMBER_WIDTH;
+		number[ index ].y = index / 3 * NUMBER_HEIGHT;
 		number[ index ].w = NUMBER_WIDTH;
 		number[ index ].h = NUMBER_HEIGHT;
 	}
@@ -236,7 +236,7 @@ int main( int argc, char **argv ){
 		} else {
 			quit = 1;
 		}
-		for( int index = 0; index < bodyCount; ++index ){
+		for( int index = 0; ( quit == 0 ) && ( index < bodyCount ); ++index ){
 			if( eat( snakeLoc, bodyLoc[ index ] ) == 1 ){
 				quit = 1;
 			}
@@ -368,18 +368,17 @@ void renderScore( SDL_Renderer *renderer, SDL_Texture *numbers, SDL_Rect *number
  */
 void spawnFood( SDL_Rect snakeLoc, SDL_Rect *foodLoc, SDL_Rect *bodyLoc, int bodyCount ){
 	int check;
-	check = 0;
 	check = 1;
-	while( check == 1 ){
+	while( check ){
 		check = 0;
-		foodLoc->x = (( rand() % TILES_WIDE ) * TILE ) + 20;
-		foodLoc->y = (( rand() % TILES_TALL ) * TILE ) + 29;
-		for( int index = 0; index < bodyCount; ++index ){
+		foodLoc->x = (( rand() % TILES_WIDE ) * TILE ) + LEFT_WALL;
+		foodLoc->y = (( rand() % TILES_TALL ) * TILE ) + TOP_WALL;
+		for( int index = 0; ( check == 0 ) && ( index < bodyCount ); ++index ){
 			if( eat( bodyLoc[ index ], *foodLoc ) == 1 ){
 				check = 1;
 			}
 		}
-		if( eat( snakeLoc, *foodLoc ) == 1 ){
+		if( ( check == 0 ) && ( eat( snakeLoc, *foodLoc ) == 1 )){
 			check = 1;
 		}
 	}
