@@ -87,6 +87,7 @@ int main( int argc, char **argv ){
 	if( tmpSurface == NULL ){
 		logSDLError( "IMG_Load \"Background\"");
 		SDL_DestroyWindow( window );
+		SDL_DestroyRenderer( renderer );
 		IMG_Quit();
 		SDL_Quit();
 		return( 1 );
@@ -95,6 +96,7 @@ int main( int argc, char **argv ){
 	if( background == NULL ){
 		logSDLError( "CreateTexture \"Background\"" );
 		SDL_DestroyWindow( window );
+		SDL_DestroyRenderer( renderer );
 		IMG_Quit();
 		SDL_Quit();
 		return( 1 );
@@ -104,6 +106,7 @@ int main( int argc, char **argv ){
 	if( tmpSurface == NULL ){
 		logSDLError( "IMG_Load \"Number\"");
 		SDL_DestroyWindow( window );
+		SDL_DestroyRenderer( renderer );
 		IMG_Quit();
 		SDL_Quit();
 		return( 1 );
@@ -112,6 +115,7 @@ int main( int argc, char **argv ){
 	if( numbers == NULL ){
 		logSDLError( "CreateTexture \"Number\"" );
 		SDL_DestroyWindow( window );
+		SDL_DestroyRenderer( renderer );
 		IMG_Quit();
 		SDL_Quit();
 		return( 1 );
@@ -121,6 +125,7 @@ int main( int argc, char **argv ){
 	if( tmpSurface == NULL ){
 		logSDLError( "IMG_Load \"Food\"");
 		SDL_DestroyWindow( window );
+		SDL_DestroyRenderer( renderer );
 		IMG_Quit();
 		SDL_Quit();
 		return( 1 );
@@ -129,6 +134,7 @@ int main( int argc, char **argv ){
 	if( food == NULL ){
 		logSDLError( "CreateTexture \"Food\"" );
 		SDL_DestroyWindow( window );
+		SDL_DestroyRenderer( renderer );
 		IMG_Quit();
 		SDL_Quit();
 		return( 1 );
